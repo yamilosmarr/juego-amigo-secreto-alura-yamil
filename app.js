@@ -1,9 +1,8 @@
-// El principal objetivo de este desafío es fortalecer tus habilidades en lógica de programación. Aquí deberás desarrollar la lógica para resolver el problema.
 //Ingresar nombre de varios amigos y luego realizar un sorteo aleatorio para determinar quién es el amigo secreto.
-//La aplicación debe permitir que se agreguen nombres a través de un campo de texto y apretando el botón añadir
-//Si un usuario intena ingresar un nombre vacío deberá aparecer una alerta indicando que debe ingresarse un nombre válido
-//Al apretar el botón añadir amigo, la app deberá escoger un nombre aleatorio y mostrarlo en pantalla.
-        //Agregar nombres, Validar entrada, Visualizar lista, Sorteo aleatorio. 
+//1 La aplicación debe permitir que se agreguen nombres a través de un campo de texto y apretando el botón añadir
+//2 Si un usuario intena ingresar un nombre vacío deberá aparecer una alerta indicando que debe ingresarse un nombre válido
+//3 Al apretar el botón añadir amigo, la app deberá escoger un nombre aleatorio y mostrarlo en pantalla.
+//4 Agregar nombres, Validar entrada, Visualizar lista, Sorteo aleatorio. 
 
 console.log("Hola!");
 
@@ -16,10 +15,6 @@ function asignarTextoElemento(elemento, texto){
 asignarTextoElemento('h1', '¡Juego del Amigo Secreto!');
 const listaAmigos = [];
 
-function condicionesIniciales(){
-    vaciarCaja();
-}
-
 function vaciarCaja(){
     const input = document.getElementById('amigo')
     input.value = "";
@@ -28,7 +23,7 @@ function vaciarCaja(){
 
 function agregarAmigo(){
     const input = document.getElementById('amigo');
-    const nombre = input.value.trim(); //.trim elimina los espacion al principio y al final.
+    const nombre = input.value.trim(); //.trim elimina los espacios al principio y al final.
     const regex = /^[a-zA-Z0 ]+$/; //esta constante contiene los caracteres válidos para nuestros nombres, la usaremos más adelante para la verificación.
     //Si se trata de ingresar un espacio vacío, alertará al usuario.
     if (nombre === ""){
@@ -77,11 +72,11 @@ function sortearAmigo(){
     let amigoSorteado = listaAmigos[numeroSorteado];
     let resultado = document.getElementById('resultado');
     resultado.innerHTML = '';
-    resultado.textContent = (`tu amigo secreto es: ${amigoSorteado}`);   
+    resultado.textContent = (`tu amigo secreto es: ${amigoSorteado}`); 
 }
-//Estoy pensando si con la tecla Enter podríamos activar ya sea la función de agregar amigo o sertearlo, Creo que agregarlo es más viable para no sortear amigos sin querer.
+//Para que con la tecla Enter podamos agregar amigos
 document.getElementById('amigo').addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
-        agregarAmigo(); //Si es Enter se ejecutará la función
+        agregarAmigo();
     }
 });
